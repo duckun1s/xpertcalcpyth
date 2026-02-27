@@ -5,7 +5,7 @@ enter 3 values: recent wins, ranking, and goals scored recently
 from sklearn.linear_model import LogisticRegression
 import numpy as np
 
-# Training data 
+
 X_train = np.array([
     [8, 1, 15],
     [6, 3, 12],
@@ -18,7 +18,7 @@ y_train = np.array([1, 1, 0, 1, 0])
 model = LogisticRegression()
 model.fit(X_train, y_train)
 
-# Read features from input (recent wins, ranking, recent goals scored)
+
 print("Enter 3 values separated by spaces: recent wins, ranking, recent goals scored")
 values = input().split()
 X_new = np.array([[int(values[0]), int(values[1]), int(values[2])]])
