@@ -1,0 +1,27 @@
+from sklearn.linear_model import LogisticRegression
+import numpy as np
+
+# Training data (fixed example)
+X_train = np.array([
+    [8, 1, 15],
+    [6, 3, 12],
+    [2, 10, 5],
+    [7, 2, 14],
+    [1, 15, 3]
+])
+y_train = np.array([1, 1, 0, 1, 0])
+
+model = LogisticRegression()
+model.fit(X_train, y_train)
+
+# Read features from input (recent wins, ranking, recent goals scored)
+print("Enter 3 values separated by spaces: recent wins, ranking, recent goals scored")
+values = input().split()
+X_new = np.array([[int(values[0]), int(values[1]), int(values[2])]])
+
+prediction = model.predict(X_new)
+proba = model.predict_proba(X_new)
+
+result = "win" if prediction[0] == 1 else "loss"
+print(f"Prediction: {result}")
+print(f"Probability of win: {proba[0][1] * 100:.2f}%")
